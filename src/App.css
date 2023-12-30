@@ -1,0 +1,10 @@
+.activeLink {
+    color: #000;
+  }
+  .Link {
+    color: rgb(225, 225, 255);
+  }
+  .Link:hover {
+    color: pink;
+    transition: 0.5s ease-in-out;
+  }

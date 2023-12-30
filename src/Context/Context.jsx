@@ -5,10 +5,12 @@ export const Context = createContext();
 
 const Provider = ({ children }) => {
 
+const value = {
 
+}
 
     return (
-        <Context.Provider>
+        <Context.Provider value={value}>
             {children}
         </Context.Provider>
     )
