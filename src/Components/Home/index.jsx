@@ -15,9 +15,9 @@ const Home = () => {
 
   const handleUser = (e) => {
     const sortValue = e.target.value;
-    // const sortData = [...data];
+    const sortData = [...data];
 
-    data.sort((a,b) => {
+    sortData.sort((a,b) => {
       if(sortValue === "A-Z"){
         return a.fullName.localeCompare(b.fullName)
       }
@@ -31,7 +31,7 @@ const Home = () => {
         return b.age -a.age
       }
     })
-    setSortUser(data)
+    setSortUser(sortData)
 
   }
 
