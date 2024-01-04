@@ -8,21 +8,18 @@ const Api = axios.create({
 
 export const GetUsers = async () => {
     try {
-        const response = Api.get("/")
-        if (response.status !== 200) {
-            throw new Error
-        }
-        else {
-            const filterData = (await response).data.filter((user) => user.id > 100)
-            return filterData
-        }
+      const response = await Api.get("/");
+      if (response.status !== 200) {
+        throw new Error("Error");
+      } else {
+        const filteredata = response.data.filter((user) => user.id > 100);
+        return filteredata;
+      }
+    } catch (error) {
+      console.log(error.message);
+      throw error;
     }
-    catch (err) {
-        console.log(err)
-        throw err
-    }
-}
-
+  };
 
 export const AddUsers = async (newUser) => {
     try {
