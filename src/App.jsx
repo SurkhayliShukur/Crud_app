@@ -4,7 +4,9 @@ import './App.css'
 import Navbar from './Components/Navbar'
 import Add from './Components/Add'
 import Home from './Components/Home'
+import Edit from './Components/Edit'
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 
@@ -24,7 +26,7 @@ function App() {
 
   return (
     <>
-      <Navbar Tabs = {Tabs} />
+      <Navbar Tabs={Tabs} />
       <Routes>
         {
           Tabs.map((item, key) => (
@@ -35,6 +37,7 @@ function App() {
             />
           ))
         }
+        <Route path={"/edit" + "/:userId"} element={<Edit />} />
       </Routes>
       <ToastContainer />
     </>

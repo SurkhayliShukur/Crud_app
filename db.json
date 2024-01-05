@@ -1,5 +1,20 @@
 {
-    "users" : [
-        
-    ]
+  "users": [
+    {
+      "fullName": "jsjsjsjsj",
+      "email": "g.pad97@mail.ru",
+      "age": "19",
+      "phone": "000000",
+      "create_at": 1704444378461,
+      "id": 1
+    },
+    {
+      "fullName": "sjsjsjsjs",
+      "email": "shukursurkhayli000@gmail.com",
+      "age": "21",
+      "phone": "000000",
+      "create_at": 1704444479308,
+      "id": 2
+    }
+  ]
 }
