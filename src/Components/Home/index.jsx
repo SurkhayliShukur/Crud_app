@@ -59,8 +59,9 @@ const Home = () => {
           </select>
           <button className='reset-btn' onClick={resetSortedData}>Reset</button>
         </div>
-        <table className='w-full text-sm text-center m-3  text-gray-500 dark:text-gray-400 '>
-          <thead className='text-l text-gray-700  bg-gray-50 dark:bg-gray-700 dark:text-gray-400 p-8'>
+        <div className='relative overflow-hidden shadow-md sm:rounded-lg w-3/4'>
+        <table className=' w-full text-sm text-center m-3  text-gray-500 dark:text-gray-400  table-auto'>
+          <thead className='text-l text-gray-700  bg-gray-50 dark:bg-gray-700 dark:text-gray-400 '>
             <tr>
               <th>Id</th>
               <th>FullName</th>
@@ -102,6 +103,8 @@ const Home = () => {
             }
           </tbody>
         </table>
+        </div>
+    
       </div>
     </>
   )
