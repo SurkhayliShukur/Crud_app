@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Input from 'antd/es/input/Input'
 import { AddUsers } from '../../Api/apiRequest'
 import { useMutation } from 'react-query'
+import {isValidEmail,isValidPhone} from "../../utils/ValidRegex"
 import { toast } from "react-toastify"
 import moment from 'moment'
 
@@ -36,13 +37,13 @@ const Add = () => {
 
   const handleAddUser = async () => {
 
-    if (!isFormValid(newUser.email)) {
+    if (!isValidEmail(newUser.email)) {
       toast.error("required email", {
         autoClose: 1000,
       })
       return;
     }
-    if (!isFormValid(newUser.phone)) {
+    if (!isValidPhone(newUser.phone)) {
       toast.error("required phone", {
         autoClose: 1000,
       })
