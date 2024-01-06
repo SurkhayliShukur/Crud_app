@@ -39,6 +39,7 @@ const Home = () => {
     await refetch();
     setSortUser([]);
   };
+  console.log(sortUser)
 
   useEffect(() => {
     refetch();
@@ -78,25 +79,26 @@ const Home = () => {
                   <td>Loading...</td>
                 </tr>
               ) :
-              isError ? (
-                <tr>
-                  <td>No Data</td>
-                </tr>
-              ) : (
-                <>
-                {
-                  (sortUser.length > 0 ? sortUser : data).map((item,key)=> (
-                    <tr key={key}>
-                      <td>{item.id + 1}</td>
-                      <td>{item.fullName}</td>
-                      <td>{item.age}</td>
-                      <td>{item.phone}</td>
-                      <td>{moment(item?.create_at).fromNow}</td>
-                    </tr>
-                  ))
-                }
-                </>
-              )
+                isError ? (
+                  <tr>
+                    <td>No Data</td>
+                  </tr>
+                ) : (
+                  <>
+                    {
+                      (sortUser.length > 0 ? sortUser : data).map((item, key) => (
+                        <tr key={key}>
+                          <td>{key + 1}</td>
+                          <td>{item.fullName}</td>
+                          <td>{item.age}</td>
+                          <td>{item.email}</td>
+                          <td>{item.phone}</td>
+                          <td>{moment(item?.create_at).fromNow()}</td>
+                        </tr>
+                      ))
+                    }
+                  </>
+                )
             }
           </tbody>
         </table>

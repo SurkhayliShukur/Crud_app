@@ -37,7 +37,7 @@ function App() {
             />
           ))
         }
-        <Route path={"/edit" + "/:userId"} element={<Edit />} />
+        <Route path={"/edit" + "/:userId"}  element={<Edit />} />
       </Routes>
       <ToastContainer />
     </>
