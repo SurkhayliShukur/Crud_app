@@ -28,7 +28,7 @@ const Edit = () => {
       refetchInterval: false,
     },
   });
- console.log("userID:",userId)
+//  console.log("userID:",userId)
   const mutation = useMutation({
     mutationFn: () => EditUsers(userId, edit),
     onSuccess: () => {
@@ -48,18 +48,18 @@ const Edit = () => {
     },
   })
   const handleUserEdit = async () => {
-    // if (!isValidEmail(edit.email)) {
-    //   toast.error("Invalid email address", {
-    //     autoClose: 1000,
-    //   });
-    //   return;
-    // }
-    // if (!isValidPhone(edit.phone)) {
-    //   toast.error("Invalid phone address", {
-    //     autoClose: 1000,
-    //   })
-    //   return
-    // }
+    if (!isValidEmail(edit.email)) {
+      toast.error("Invalid email address", {
+        autoClose: 1000,
+      });
+      return;
+    }
+    if (!isValidPhone(edit.phone)) {
+      toast.error("Invalid phone address", {
+        autoClose: 1000,
+      })
+      return
+    }
     mutation.mutate(edit)
   }
 

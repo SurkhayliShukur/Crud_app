@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import Input from 'antd/es/input/Input'
 import { AddUsers } from '../../Api/apiRequest'
 import { useMutation } from 'react-query'
+import { useNavigate } from 'react-router-dom'
 import {isValidEmail,isValidPhone} from "../../utils/ValidRegex"
 import { toast } from "react-toastify"
 import moment from 'moment'
 
 const Add = () => {
+
+  const navigate = useNavigate()
 
   const initialState = {
     fullName: "",
@@ -22,6 +25,9 @@ const Add = () => {
       toast.success("Added successfully!", {
         autoClose: 1000,
       })
+      setTimeout(() => {
+        navigate("/")
+      }, [1500])
     },
 
     onError: (error) => {
