@@ -3,15 +3,16 @@ import { Context } from "../../Context/Context"
 import { toast } from "react-toastify";
 import { DeleteUsers } from '../../Api/apiRequest';
 import { useMutation, useQueryClient } from "react-query";
+import { QUERIES } from '../../constant/Queries';
 
 const Delete = () => {
     const { show, deleteItem, closeDelModal } = useContext(Context)
     const queryClient = useQueryClient()
 
     const mutation = useMutation({
-        mutationFn: DeleteUsers, // (userId) => DeleteUser(userId),
+        mutationFn: DeleteUsers,
         onSuccess: () => {
-          queryClient.invalidateQueries(["users"]);
+          queryClient.invalidateQueries(QUERIES.Users);
           closeDelModal();
           toast.success("User deleted successfully!", {
             autoClose: 1000,

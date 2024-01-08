@@ -1,3 +1,20 @@
 {
-  "users": []
+  "users": [
+    {
+      "fullName": "xxx",
+      "email": "g.pad97@mail.ru",
+      "age": "12",
+      "phone": "+994519999999",
+      "create_at": 1704697034283,
+      "id": 1
+    },
+    {
+      "fullName": "xxxxxx",
+      "email": "g.pad97@mail.ru",
+      "age": "44",
+      "phone": "+994519999999",
+      "create_at": 1704697063991,
+      "id": 2
+    }
+  ]
 }
