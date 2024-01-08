@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useQuery } from 'react-query'
 import { GetUsers } from '../../Api/apiRequest'
 import { ROUTER } from '../../constant/Router';
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { Context } from '../../Context/Context';
+import { FaTrash } from "react-icons/fa";
+import Delete from '../Delete';
 
 const Home = () => {
 
   const navigate = useNavigate()
+  const { openDelModal } = useContext(Context)
 
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["users"],
@@ -52,6 +56,8 @@ const Home = () => {
 
   return (
     <>
+      <Delete />
+
       <div className="styleContainer">
         <h1>Table</h1>
         <div className="sortAble">
@@ -65,57 +71,67 @@ const Home = () => {
           <button className='reset-btn' onClick={resetSortedData}>Reset</button>
         </div>
         <div className='overflow-x-auto'>
-        <table className='table'>
-          <thead className=''>
-            <tr>
-              <th>Id</th>
-              <th>FullName</th>
-              <th>Age</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Added</th>
-              <th>Update</th>
-              {/* <th>Actions</th> */}
-            </tr>
-          </thead>
-          <tbody>
-            {
-              isLoading ? (
-                <tr>
-                  <td>Loading...</td>
-                </tr>
-              ) :
-                isError ? (
+          <table className='table'>
+            <thead className=''>
+              <tr>
+                <th>Id</th>
+                <th>FullName</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Added</th>
+                <th>Update</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                isLoading ? (
                   <tr>
-                    <td>No Data</td>
+                    <td>Loading...</td>
                   </tr>
-                ) : (
-                  <>
-                    {
-                      (sortUser.length > 0 ? sortUser : data).map((item, key) => (
-                        <tr key={key}>
-                          <td>{key + 1}</td>
-                          <td>{item.fullName}</td>
-                          <td>{item.age}</td>
-                          <td>{item.email}</td>
-                          <td>{item.phone}</td>
-                          <td>{moment(item?.create_at).fromNow()}</td>
-                          <td><button 
-                          onClick={() =>{
-                            navigate(`${ROUTER.Edit}/${item.id}`)
-                          }}
-                          className="btn btn-warning">Edit</button></td>
-                        </tr>
-                      ))
-                    }
-                  </>
-                )
-            }
-          </tbody>
-        </table>
+                ) :
+                  isError ? (
+                    <tr>
+                      <td>No Data</td>
+                    </tr>
+                  ) : (
+                    <>
+                      {
+                        (sortUser.length > 0 ? sortUser : data).map((item, key) => (
+                          <tr key={key}>
+                            <td>{key + 1}</td>
+                            <td>{item.fullName}</td>
+                            <td>{item.age}</td>
+                            <td>{item.email}</td>
+                            <td>{item.phone}</td>
+                            <td>{moment(item?.create_at).fromNow()}</td>
+                            <td>
+                              <button
+                                onClick={() => {
+                                  navigate(`${ROUTER.Edit}/${item.id}`)
+                                }}
+                                className="btn btn-warning text-white">Edit</button>
+                            </td>
+                            <td>
+                              <button
+                                onClick={() => openDelModal(item)}
+                                className='btn btn-error text-white'>
+                                <FaTrash />
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                      }
+                    </>
+                  )
+              }
+            </tbody>
+          </table>
         </div>
-    
+
       </div>
+
     </>
   )
 }
