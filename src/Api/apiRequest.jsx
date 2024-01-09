@@ -69,8 +69,8 @@ export const AddUsers = async (newUser) => {
 
 export const DeleteUsers = async (userId) => {
   try {
-    const response = Api.delete(`/${userId}`)
-    if(response.status === 200){
+    const response = await Api.delete(`/${userId}`)
+    if(response.status !==200){
       throw new Error("Error")
     }
     else{
