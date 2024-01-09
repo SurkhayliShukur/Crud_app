@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const Api = axios.create({
-  baseURL: "http://localhost:3005/users"
-  // baseURL: "https://blog-api-t6u0.onrender.com/posts"
+  // baseURL: "http://localhost:3005/users"
+  baseURL: "https://blog-api-t6u0.onrender.com/posts"
 })
 
 
@@ -12,10 +12,10 @@ export const GetUsers = async () => {
     if (response.status !== 200) {
       throw new Error("Error");
     } else {
-      // const filteredata = response.data.filter((user) => user.id > 100);
-      // return filteredata;
+      const filteredata = response.data.filter((user) => user.id > 100);
+      return filteredata;
 
-      return response.data
+      // return response.data
     }
   } catch (error) {
     console.log(error.message);
