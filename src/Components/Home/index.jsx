@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import { Context } from '../../Context/Context';
 import { FaTrash } from "react-icons/fa";
+import { MdVisibility } from "react-icons/md";
 import Delete from '../Delete';
 
 const Home = () => {
@@ -82,6 +83,7 @@ const Home = () => {
                 <th>Added</th>
                 <th>Update</th>
                 <th>Actions</th>
+                <th>Detail</th>
               </tr>
             </thead>
             <tbody>
@@ -118,6 +120,15 @@ const Home = () => {
                                 onClick={() => openDelModal(item)}
                                 className='btn btn-error text-white'>
                                 <FaTrash />
+                              </button>
+                            </td>
+                            <td>
+                              <button
+                                onClick={() => {
+                                  navigate(`${ROUTER.Detail}/${item.id}`)
+                                }}
+                                className='btn btn-success text-white'>
+                                <MdVisibility style={{fontSize:"x-large"}} />
                               </button>
                             </td>
                           </tr>

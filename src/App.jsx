@@ -7,6 +7,7 @@ import Home from './Components/Home'
 import Edit from './Components/Edit'
 import { ToastContainer } from "react-toastify";
 import {ROUTER} from "./constant/Router"
+import Detail from './Components/Detail'
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           ))
         }
         <Route path={ROUTER.Edit + "/:userId"}  element={<Edit />}/>
+        <Route path={ROUTER.Detail + "/:userId"} element = {<Detail/>}/> 
       </Routes>
       <ToastContainer />
     </>
