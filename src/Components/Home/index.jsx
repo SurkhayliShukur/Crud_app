@@ -82,7 +82,7 @@ const Home = () => {
                 <th>Phone</th>
                 <th>Added</th>
                 <th>Update</th>
-                <th>Actions</th>
+                <th>Delete</th>
                 <th>Detail</th>
               </tr>
             </thead>
